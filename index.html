@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockCraft BETA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+<body style="background: transparent;" >
+    <div id="GameVersionOverlay">BlockCraft BETA V0.0.3_1</div>
+    <style>
+    #GameVersionOverlay {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        color: white;
+        font-family: 'Press Start 2P';
+        font-size: 17px;
+        background: transparent; /* ensures there's no black background */
+        pointer-events: none;
+        z-index: 100;
+    }
+    </style>
+    <div id="mainMenu" style="position: fixed; top: 0; left: 0; width: 100vw; z-index: 19; height: 100vh; background: black; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+        <h1 id="UAT">BIOME BETA UPDATE!</h1>
+        <h1 style="color: white;">BlockCraft Beta</h1>
+        <button id="startBtn" style="font-size: 2em; padding: 0.5em 2em;">Play</button>
+        <button id="aboutBtn" style="font-size: 1.5em; padding: 0.5em 2em; margin-top: 1.4em">About game</button>
+        <h1 id="aboutTxt" style="font-size: 2em; padding: 0.5em 2em; color: white; display: none;">BlockCraft is a game where you can build and destroy blocks 
+            in a 3D environment. 
+            It was developed by kinkajou-games and the owner is Derek Errigo. Now please note this game is in
+        a very early phase, which is currently "BETA". I hope to make this game the next Minecraft and
+        the Minecraft everyone wants by always listening to the community no matter what "if its not bad lol". 
+         Also this game is fully moddable so if you want to change stuff you could, just please
+        dont claim the game for your own game :D. Also read the modders.txt in the fordeveloper folder if 
+        your a modder to please!</h1>
+        <button id="BackAbt" style="font-size: 1.5em; padding: 0.5em 2em; margin-top: 2em; display: none;">Back</button>
+        <button id="CW" style="font-size: 1.5em; padding: 0.5em 2em; display: none;">Create World</button>
+        <!--Map Creator menu-->
+        <div id="CwM" style="display: none; flex-direction: row; align-items: center; margin-top: 4em;">
+            <label for="tHeight" style="color: white; font-size: 1.5em;">Set Hill Height:</label>
+            <input type="number" id="tHeight" min="1" max="100" step="1" value="2" style="font-size: 1.5em; padding: 0.5em 2em; margin-left: 1em;">
+        </div>
+
+        <div id="CBH" style="display: none; flex-direction: row; align-items: center; margin-top: 8em;">
+            <label for="TBHeight" style="color: white; font-size: 1.5em;">Set Chunk Base Height:</label>
+            <input type="number" id="TBHeight" min="1" max="100" step="1" value="2" style="font-size: 1.5em; padding: 0.5em 2em; margin-left: 1em;">
+        </div>
+
+        <div id="CS" style="display: none; flex-direction: row; align-items: center; margin-top: 16em;">
+            <label for="CSize" style="color: white; font-size: 1.5em;">Chunk size:</label>
+            <input type="number" id="CSize" min="1" max="100" step="1" value="16" style="font-size: 1.5em; padding: 0.5em 2em; margin-left: 1em;">
+        </div>
+    </div>
+    <script>
+
+        document.getElementById('CW').onclick = function()
+        {
+            document.getElementById('mainMenu').style.display = 'none';
+            HILL_HEIGHT = parseInt(document.getElementById('tHeight').value, 10);
+            HILL_BASEH = parseInt(document.getElementById('TBHeight').value, 10);
+            HILL_FIX = parseInt(document.getElementById('tHeight').value, 10 - 2);
+            CHUNK_SIZE = parseInt(document.getElementById('CSize').value, 10 - 2);
+            document.getElementById('UAT').style.display = 'none';
+    
+            Render = true;
+        };
+
+        document.getElementById('startBtn').onclick = function()
+        {
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('aboutBtn').style.display = 'none';
+            document.getElementById('CW').style.display = 'block';
+            document.getElementById('CwM').style.display = 'block';
+            document.getElementById('CBH').style.display = 'block';
+            document.getElementById('CS').style.display = 'block';
+        };
+
+        document.getElementById('aboutBtn').onclick = function()
+        {
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('aboutTxt').style.display = 'block';
+            document.getElementById('aboutBtn').style.display = 'none';
+            document.getElementById('BackAbt').style.display = 'block';
+        };
+
+        document.getElementById('BackAbt').onclick = function()
+        {
+            document.getElementById('startBtn').style.display = 'block';
+            document.getElementById('aboutTxt').style.display = 'none';
+            document.getElementById('aboutBtn').style.display = 'block';
+            document.getElementById('BackAbt').style.display = 'none';
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="PointerLockControls.js"></script>
+    <script src="controls.js"></script>
+    <script src="blockActions.js"></script>
+    <script src="block.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplex-noise@4.0.1/simplex-noise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
+    <script src="chunk.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

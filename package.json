@@ -1,0 +1,16 @@
+{
+  "name": "blockcraft",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . BlockCraft --platform=win32 --arch=x64 --overwrite --electron-version=28.2.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron-packager": "^17.1.2"
+  }
+}
