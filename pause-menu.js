@@ -5,7 +5,9 @@ class PauseMenu {
     constructor() {
         this.isVisible = false;
         this.pauseContainer = null;
+        console.log('PauseMenu constructor called');
         this.init();
+        console.log('PauseMenu initialized successfully');
     }
     
     init() {
@@ -274,17 +276,19 @@ class PauseMenu {
     }
     
     bindEvents() {
-        // P key to toggle pause menu
+        // Backslash key (\) to toggle pause menu
         document.addEventListener('keydown', (event) => {
-            if (event.code === 'KeyP') {
+            // Toggle with Backslash or P
+            if (event.code === 'Backslash' || event.code === 'KeyP') {
                 event.preventDefault();
+                console.log(`${event.code} pressed - toggling pause menu`);
+
                 if (this.isVisible) {
+                    console.log('Hiding pause menu');
                     this.hide();
                 } else {
-                    // Only show pause menu if game is running (not in main menu)
-                    if (typeof Render !== 'undefined' && Render) {
-                        this.show();
-                    }
+                    console.log('Showing pause menu');
+                    this.show();
                 }
             }
         });
@@ -543,9 +547,18 @@ class PauseMenu {
             const crosshair = document.getElementById('crosshair');
             if (hotbar) hotbar.style.display = 'none';
             if (crosshair) crosshair.style.display = 'none';
-        }
     }
 }
 
 // Global pause menu instance
 const pauseMenu = new PauseMenu();
+
+// Debug helper - check if game is ready for pause menu
+window.checkPauseMenuStatus = function() {
+    console.log('=== Pause Menu Status ===');
+    console.log('Render variable:', typeof Render !== 'undefined' ? Render : 'undefined');
+    console.log('Main menu display:', document.getElementById('mainMenu') ? document.getElementById('mainMenu').style.display : 'not found');
+    console.log('Pause menu visible:', pauseMenu.isVisible);
+    console.log('Camera position:', typeof camera !== 'undefined' ? camera.position : 'camera not defined');
+    console.log('========================');
+};
