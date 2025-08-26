@@ -816,10 +816,9 @@ class MenuSystem {
         document.querySelectorAll('.world-delete-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const worldName = e.target.getAttribute('data-world-name');
-                if (confirm(`Are you sure you want to delete "${worldName}"?`)) {
-                    worldManager.deleteWorld(worldName);
-                    this.showWorldSelection(); // Refresh the list
-                }
+                console.log(`Deleting world: ${worldName}`);
+                worldManager.deleteWorld(worldName);
+                this.showWorldSelection(); // Refresh the list
             });
         });
         
@@ -892,9 +891,8 @@ class MenuSystem {
                 this.showComingSoon();
                 break;
             case 'quitGame':
-                if (confirm('Are you sure you want to quit?')) {
-                    window.close();
-                }
+                console.log('Quitting game...');
+                window.close();
                 break;
         }
     }
@@ -925,7 +923,7 @@ class MenuSystem {
         if (worldManager.loadWorld(worldName)) {
             this.startGameWithWorld();
         } else {
-            alert(`Failed to load world "${worldName}"`);
+            console.error(`Failed to load world "${worldName}"`);
         }
     }
 
@@ -952,15 +950,14 @@ class MenuSystem {
                 const success = worldManager.importWorldFromJSON(e.target.result, worldName);
                 
                 if (success) {
-                    alert(`World "${worldName}" uploaded successfully!`);
+                    console.log(`World "${worldName}" uploaded successfully!`);
                     this.showWorldSelection(); // Refresh the world list
                 } else {
-                    alert('Failed to upload world. Please check the file format.');
+                    console.error('Failed to upload world. Please check the file format.');
                 }
                 
             } catch (error) {
                 console.error('Upload error:', error);
-                alert('Error uploading world: ' + error.message);
             }
             
             // Clear file input

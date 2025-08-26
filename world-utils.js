@@ -52,14 +52,11 @@ class WorldUtils {
                     const success = worldManager.importWorldFromJSON(e.target.result);
                     if (success) {
                         console.log('World imported successfully');
-                        alert('World imported successfully! Check the world selection menu.');
                     } else {
                         console.error('Failed to import world');
-                        alert('Failed to import world. Please check the file format.');
                     }
                 } catch (error) {
                     console.error('Import error:', error);
-                    alert('Error importing world: ' + error.message);
                 }
             };
             reader.readAsText(file);
@@ -94,13 +91,8 @@ class WorldUtils {
     
     // Clear all saved worlds (use with caution!)
     static clearAllWorlds() {
-        if (!confirm('Are you sure you want to delete ALL saved worlds? This cannot be undone!')) {
-            return false;
-        }
-        
-        if (!confirm('This will permanently delete all your worlds. Are you absolutely sure?')) {
-            return false;
-        }
+        // Skip confirmation dialogs - just delete
+        console.log('Clearing all worlds...');
         
         try {
             const worlds = worldManager.getSavedWorlds();
@@ -109,7 +101,6 @@ class WorldUtils {
             });
             
             console.log(`Deleted ${worlds.length} worlds`);
-            alert(`Deleted ${worlds.length} worlds`);
             return true;
             
         } catch (error) {

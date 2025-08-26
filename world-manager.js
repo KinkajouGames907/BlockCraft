@@ -128,7 +128,7 @@ class WorldManager {
                     return true;
                 } catch (secondError) {
                     console.error('Failed to save world even after cleanup:', secondError);
-                    alert('Storage is full! Please delete some old worlds or export important worlds as JSON files.');
+                    console.warn('Storage is full! Consider deleting old worlds or exporting as JSON files.');
                     return false;
                 }
             } else {

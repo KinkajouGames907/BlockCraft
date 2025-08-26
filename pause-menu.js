@@ -504,9 +504,8 @@ class PauseMenu {
     }
     
     exitToMainMenu() {
-        if (confirm('Are you sure you want to exit to main menu? Unsaved progress will be lost.')) {
-            // Save current state first
-            this.saveCurrentChunks();
+        // Save current state first
+        this.saveCurrentChunks();
             worldManager.saveWorld();
             
             // Hide pause menu
