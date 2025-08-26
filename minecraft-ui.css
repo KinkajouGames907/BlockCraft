@@ -1,0 +1,291 @@
+/* Minecraft-style UI Enhancements */
+
+/* Global pixelated rendering */
+* {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Minecraft-style scrollbars */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #666666 0%, #444444 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #C6C6C6 0%, #8B8B8B 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #DDDDDD 0%, #AAAAAA 100%);
+}
+
+::-webkit-scrollbar-corner {
+    background: #444444;
+}
+
+/* Minecraft-style selection */
+::selection {
+    background: rgba(85, 255, 85, 0.3);
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background: rgba(85, 255, 85, 0.3);
+    color: #FFFFFF;
+}
+
+/* Enhanced button animations */
+@keyframes minecraft-button-press {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(2px); }
+    100% { transform: translateY(0px); }
+}
+
+.menu-button:active,
+.pause-button:active,
+.world-play-btn:active,
+.world-delete-btn:active {
+    animation: minecraft-button-press 0.1s ease-in-out;
+}
+
+/* Minecraft-style tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background: linear-gradient(to bottom, #C6C6C6 0%, #8B8B8B 100%);
+    color: #000000;
+    text-align: center;
+    border: 2px solid #000000;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    padding: 8px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    text-shadow: 1px 1px 0px #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Minecraft-style loading animation */
+@keyframes minecraft-loading {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.loading {
+    background: linear-gradient(-45deg, #55FF55, #00AA00, #55FF55, #00AA00);
+    background-size: 400% 400%;
+    animation: minecraft-loading 2s ease infinite;
+}
+
+/* Minecraft-style focus indicators */
+input:focus,
+select:focus,
+button:focus {
+    outline: 2px solid #55FF55;
+    outline-offset: 2px;
+}
+
+/* Minecraft-style disabled state */
+.disabled,
+[disabled] {
+    filter: grayscale(50%) brightness(0.7);
+    cursor: not-allowed !important;
+}
+
+/* Minecraft-style text shadows for better readability */
+.minecraft-text {
+    text-shadow: 2px 2px 0px #000000;
+    color: #FFFFFF;
+    font-family: 'Press Start 2P', monospace;
+}
+
+/* Minecraft-style panel */
+.minecraft-panel {
+    background: linear-gradient(to bottom, #C6C6C6 0%, #8B8B8B 100%);
+    border: 3px solid #000000;
+    border-top: 3px solid #FFFFFF;
+    border-left: 3px solid #FFFFFF;
+    border-right: 3px solid #555555;
+    border-bottom: 3px solid #555555;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Minecraft-style input fields */
+.minecraft-input {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #CCCCCC 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #555555;
+    border-left: 2px solid #555555;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    color: #000000;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    padding: 6px;
+}
+
+.minecraft-input:focus {
+    background: linear-gradient(to bottom, #FFFFAA 0%, #DDDDAA 100%);
+}
+
+/* Minecraft-style checkbox */
+.minecraft-checkbox {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #CCCCCC 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #555555;
+    border-left: 2px solid #555555;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.minecraft-checkbox:checked {
+    background: linear-gradient(to bottom, #55FF55 0%, #00AA00 100%);
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #004400;
+    border-bottom: 2px solid #004400;
+}
+
+.minecraft-checkbox:checked::after {
+    content: '✓';
+    display: block;
+    color: #FFFFFF;
+    font-size: 10px;
+    text-align: center;
+    line-height: 12px;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Minecraft-style progress bar */
+.minecraft-progress {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, #666666 0%, #444444 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #888888;
+    border-left: 2px solid #888888;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    overflow: hidden;
+}
+
+.minecraft-progress-bar {
+    height: 100%;
+    background: linear-gradient(to bottom, #55FF55 0%, #00AA00 100%);
+    border-right: 2px solid #004400;
+    transition: width 0.3s ease;
+}
+
+/* Minecraft-style alert/notification */
+.minecraft-alert {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background: linear-gradient(to bottom, #FFFF55 0%, #FFAA00 100%);
+    color: #000000;
+    padding: 12px 16px;
+    border: 2px solid #000000;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #AA6600;
+    border-bottom: 2px solid #AA6600;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    z-index: 2000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Minecraft-style context menu */
+.minecraft-context-menu {
+    background: linear-gradient(to bottom, #C6C6C6 0%, #8B8B8B 100%);
+    border: 2px solid #000000;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    padding: 4px;
+}
+
+.minecraft-context-menu-item {
+    padding: 6px 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #000000;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px #FFFFFF;
+}
+
+.minecraft-context-menu-item:hover {
+    background: linear-gradient(to bottom, #55FF55 0%, #00AA00 100%);
+    color: #FFFFFF;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-button,
+    .pause-button {
+        font-size: 8px;
+        padding: 8px 16px;
+        min-width: 150px;
+    }
+    
+    #hotbar {
+        width: 300px;
+        height: 36px;
+    }
+    
+    .hotbar-slot {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    #crosshair {
+        width: 13px;
+        height: 13px;
+        margin-left: -6.5px;
+        margin-top: -6.5px;
+    }
+}
